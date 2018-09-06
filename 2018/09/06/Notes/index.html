@@ -137,7 +137,12 @@
 </span>
     </div>
     <div class="post-content ">
-        <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        <p><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script></p>
+<p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script><br><strong>In many computer vision tasks, distortion and transformation of image is highly needed. For example, in Cloth Visual Try on, which is the area i am interested in, cloth has to be distorted before putting on real-world human. Spatial Transfromer Network has shown impressive results in terms of image transformation and attention. It is worth reading this paper slowly and carefully.</strong></p>
 <hr>
 <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>Spatial Transformer Network explicitly allows the spatial manipulation of data within the network.</p>
