@@ -159,19 +159,15 @@
 <li><strong>grid generator</strong>: parameters form part 1 are used to create a sampling grid, wihch is a set of points where the input map should be sampled to produce the transformed output</li>
 <li><strong>sampler</strong>: feature map and sampling grid as input to sampler, producing output map sampled from the input at the grid points</li>
 </ul>
-<h2 id="Localisation-Network"><a href="#Localisation-Network" class="headerlink" title="Localisation Network"></a>Localisation Network</h2><p>`$$<br>\theta=f_{loc}(U)</p>
-<script type="math/tex; mode=display">`
-
-$$\theta$$ is output, $$U$$ is input, $$f_{loc}$$ is network function, it can take any form including FC network, CNN, but should include a final regression layer to produce transformation parameters $\theta$
+<h2 id="Localisation-Network"><a href="#Localisation-Network" class="headerlink" title="Localisation Network"></a>Localisation Network</h2><script type="math/tex; mode=display">
+\theta=f_{loc}(U)</script><script type="math/tex; mode=display">\theta$$ is output, $$U$$ is input, $$f_{loc}$$ is network function, it can take any form including FC network, CNN, but should include a final regression layer to produce transformation parameters $\theta$
 
 ## Parameterised Sampling Grid
 To perform warping of the input feature map, each output pixel is computed by applying a sampling kernel centered at particular location in the input feature map.
 
 ![image](https://res.cloudinary.com/dtifkxumc/image/upload/v1536228783/blog/1.%20Spatial%20Transformer%20Network/sampling_grid.png)
-Assume $$T_{\theta}$$ is a 2D affine transformation $$A_{\theta}$$.
-
-`</script><p>\left(\begin{array}{cc}x_{i}^s \\ y_{i}^s\end{array}\right)=A_{\theta}\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)=\left[\begin{array}{cc}\theta_{11} &amp;\theta_{12} &amp;\theta_{13} \\ \theta_{21} &amp;\theta_{22} &amp;\theta_{23}\end{array}\right]\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)</p>
-<script type="math/tex; mode=display">`
+Assume $$T_{\theta}$$ is a 2D affine transformation $$A_{\theta}$$.</script><p>\left(\begin{array}{cc}x_{i}^s \\ y_{i}^s\end{array}\right)=A_{\theta}\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)=\left[\begin{array}{cc}\theta_{11} &amp;\theta_{12} &amp;\theta_{13} \\ \theta_{21} &amp;\theta_{22} &amp;\theta_{23}\end{array}\right]\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)</p>
+<script type="math/tex; mode=display">
 
 $$(x_{i}^t,y_{i}^t)$$ are the target coordinates of the regular grid in the output feature map.
 
