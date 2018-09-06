@@ -114,12 +114,20 @@
 <li><strong>grid generator</strong>: parameters form part 1 are used to create a sampling grid, wihch is a set of points where the input map should be sampled to produce the transformed output</li>
 <li><strong>sampler</strong>: feature map and sampling grid as input to sampler, producing output map sampled from the input at the grid points</li>
 </ul>
-<h2 id="Localisation-Network"><a href="#Localisation-Network" class="headerlink" title="Localisation Network"></a>Localisation Network</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta=f_&#123;loc&#125;(U)</span><br></pre></td></tr></table></figure>
-<p>$\theta$ is output, $U$ is input, $f_{loc}$ is network function, it can take any form including FC network, CNN, but should include a final regression layer to produce transformation parameters $\theta$</p>
-<h2 id="Parameterised-Sampling-Grid"><a href="#Parameterised-Sampling-Grid" class="headerlink" title="Parameterised Sampling Grid"></a>Parameterised Sampling Grid</h2><p>To perform warping of the input feature map, each output pixel is computed by applying a sampling kernel centered at particular location in the input feature map.</p>
-<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1536228783/blog/1.%20Spatial%20Transformer%20Network/sampling_grid.png" alt="image"><br>Assume <script type="math/tex">T_{\theta}</script> is a 2D affine transformation <script type="math/tex">A_{\theta}</script>.</p>
+<h2 id="Localisation-Network"><a href="#Localisation-Network" class="headerlink" title="Localisation Network"></a>Localisation Network</h2><p>`$$<br>\theta=f_{loc}(U)</p>
+<script type="math/tex; mode=display">`
+
+$$\theta$$ is output, $$U$$ is input, $$f_{loc}$$ is network function, it can take any form including FC network, CNN, but should include a final regression layer to produce transformation parameters $\theta$
+
+## Parameterised Sampling Grid
+To perform warping of the input feature map, each output pixel is computed by applying a sampling kernel centered at particular location in the input feature map.
+
+![image](https://res.cloudinary.com/dtifkxumc/image/upload/v1536228783/blog/1.%20Spatial%20Transformer%20Network/sampling_grid.png)
+Assume $$T_{\theta}$$ is a 2D affine transformation $$A_{\theta}$$.
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\left(\begin&#123;array&#125;&#123;cc&#125;x_&#123;i&#125;^s \\ y_&#123;i&#125;^s\end&#123;array&#125;\right)=A_&#123;\theta&#125;\left(\begin&#123;array&#125;&#123;cc&#125;x_&#123;i&#125;^t\\y_&#123;i&#125;^t\\1\end&#123;array&#125;\right)=\left[\begin&#123;array&#125;&#123;cc&#125;\theta_&#123;11&#125; &amp;\theta_&#123;12&#125; &amp;\theta_&#123;13&#125; \\ \theta_&#123;21&#125; &amp;\theta_&#123;22&#125; &amp;\theta_&#123;23&#125;\end&#123;array&#125;\right]\left(\begin&#123;array&#125;&#123;cc&#125;x_&#123;i&#125;^t\\y_&#123;i&#125;^t\\1\end&#123;array&#125;\right)</span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">(x_{i}^t,y_{i}^t)$$ are the target coordinates of the regular grid in the output feature map.
+
+$$(x_{i}^t,y_{i}^t)$$ are the target coordinates of the regular grid in the output feature map.
 
 $$(x_{i}^s,y_{i}^s)$$ are the source coordinates in the input feature map that define the sample points
 
@@ -142,7 +150,7 @@ To perform a spatial transformation of the input feature map, a sampler must tak
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://newbeeyoung.github.io/2018/09/06/Notes/" data-id="cjlqgikff000274vio411otvl" class="article-share-link">Share</a>
+      <a data-url="https://newbeeyoung.github.io/2018/09/06/Notes/" data-id="cjlqgoi22000034vizieoqfgs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deep-Learning-Transformation/">-Deep Learning -Transformation</a></li></ul>
@@ -189,7 +197,7 @@ To perform a spatial transformation of the input feature map, a sampler must tak
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://newbeeyoung.github.io/2018/09/06/hello-world/" data-id="cjlqgikf4000074vior9zyd07" class="article-share-link">Share</a>
+      <a data-url="https://newbeeyoung.github.io/2018/09/06/hello-world/" data-id="cjlqgoi2b000234vi39acpide" class="article-share-link">Share</a>
       
       
     </footer>
