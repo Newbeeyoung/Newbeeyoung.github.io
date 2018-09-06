@@ -168,8 +168,10 @@ $$\theta$$ is output, $$U$$ is input, $$f_{loc}$$ is network function, it can ta
 To perform warping of the input feature map, each output pixel is computed by applying a sampling kernel centered at particular location in the input feature map.
 
 ![image](https://res.cloudinary.com/dtifkxumc/image/upload/v1536228783/blog/1.%20Spatial%20Transformer%20Network/sampling_grid.png)
-Assume $$T_{\theta}$$ is a 2D affine transformation $$A_{\theta}$$.</script><p>\left(\begin{array}{cc}x_{i}^s \\ y_{i}^s\end{array}\right)=A_{\theta}\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)=\left[\begin{array}{cc}\theta_{11} &amp;\theta_{12} &amp;\theta_{13} \\ \theta_{21} &amp;\theta_{22} &amp;\theta_{23}\end{array}\right]\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)</p>
-<script type="math/tex; mode=display">
+Assume $$T_{\theta}$$ is a 2D affine transformation $$A_{\theta}$$.
+
+`</script><p>\left(\begin{array}{cc}x_{i}^s \\ y_{i}^s\end{array}\right)=A_{\theta}\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)=\left[\begin{array}{cc}\theta_{11} &amp;\theta_{12} &amp;\theta_{13} \\ \theta_{21} &amp;\theta_{22} &amp;\theta_{23}\end{array}\right]\left(\begin{array}{cc}x_{i}^t\\y_{i}^t\\1\end{array}\right)</p>
+<script type="math/tex; mode=display">`
 
 $$(x_{i}^t,y_{i}^t)$$ are the target coordinates of the regular grid in the output feature map.
 
