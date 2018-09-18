@@ -237,7 +237,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <ol>
 <li>Directly connect CNN model to deep LSTM network, to train video recognition models, which improves on the order of 4% on conventional benchmark</li>
 <li>Use CNN to encdoe a state vector, an LSTM to decode the vector into an natural language string, to train an end-to-end image to sentence mapping.</li>
-<li>Use conventional computer vision method to predict higher-level discriminative labels, enables LSTM decoders to generate language string<br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM1.png" alt="image"></li>
+<li>Use conventional computer vision method to predict higher-level discriminative labels, enables LSTM decoders to generate language string<br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537262401/blog/4.%20Action%20Recognition/LSTM_modified.jpg" alt="image"></li>
 </ol>
 <h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture"></a>Architecture</h2><p>The LRCN model works by passing each visual input $v_{t}$ (an image in isolation, or a frame from a video) through a feature transformation $\phi_{V}(v_{t})$ parametrized by $V$ to produce a fixed-length vector representation $\phi_{t}\in R^d$. Having computed the feature space representation of the visual input sequence $&lt;\phi_{1},\phi_{2},…,\phi_{T}&gt;$, the sequence model then takes over.</p>
 <p>The final step in predicting a distribution $P(y_{t})$ is to take a softmax over the output $z_{t}$ of the sequence model.</p>
