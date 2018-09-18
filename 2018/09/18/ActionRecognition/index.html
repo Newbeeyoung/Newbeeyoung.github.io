@@ -232,9 +232,9 @@
 <li>Use CNN to encdoe a state vector, an LSTM to decode the vector into an natural language string, to train an end-to-end image to sentence mapping.</li>
 <li>Use conventional computer vision method to predict higher-level discriminative labels, enables LSTM decoders to generate language string<br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM1.png" alt="image"></li>
 </ol>
-<h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture"></a>Architecture</h2><p>The LRCN model works by passing each visual input <script type="math/tex">v_{t}</script> (an image in isolation, or a frame from a video) through a feature transformation <script type="math/tex">\phi_{V}(v_{t})</script> parametrized by <script type="math/tex">V</script> to produce a fixed-length vector representation <script type="math/tex">\phi_{t}\in R^d</script>. Having computed the feature space representation of the visual input sequence <script type="math/tex"><\phi_{1},\phi_{2},...,\phi_{T}></script>, the sequence model then takes over.</p>
-<p>The final step in predicting a distribution <script type="math/tex">P(y_{t})</script> is to take a softmax over the output <script type="math/tex">z_{t}</script> of the sequence model.</p>
-<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM2.png" alt="image"><br>LRCN models is trained using SGD with momentum, with backpropagation to compute the gradient <script type="math/tex">\nabla L(V,W)</script> of the objective <script type="math/tex">L</script> with respect to all parameters <script type="math/tex">(V,W)</script>. <script type="math/tex">W</script> is parameter of LSTM, <script type="math/tex">V</script> is parameter of CNN.</p>
+<h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture"></a>Architecture</h2><p>The LRCN model works by passing each visual input $v_{t}$ (an image in isolation, or a frame from a video) through a feature transformation $\phi_{V}(v_{t})$ parametrized by $V$ to produce a fixed-length vector representation $\phi_{t}\in R^d$. Having computed the feature space representation of the visual input sequence $&lt;\phi_{1},\phi_{2},…,\phi_{T}&gt;$, the sequence model then takes over.</p>
+<p>The final step in predicting a distribution $P(y_{t})$ is to take a softmax over the output $z_{t}$ of the sequence model.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM2.png" alt="image"><br>LRCN models is trained using SGD with momentum, with backpropagation to compute the gradient $\nabla L(V,W)$ of the objective $L$ with respect to all parameters $(V,W)$. $W$ is parameter of LSTM, $V$ is parameter of CNN.</p>
 <h2 id="Action-Recognition"><a href="#Action-Recognition" class="headerlink" title="Action Recognition"></a>Action Recognition</h2><p>T individual frames are inputs into T convolutional networks which are then connected to a single-layer LSTM with 2565 hidden units. The study analyzes clips of 16 frames.</p>
 <p>It explores 2 varaints of LRCN: LSTM is placed after CNN fc6 and CNN fc7. </p>
 <h3 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h3><p>In training, video clip of 16 frames is fed into model. LRCN predicts the video class at each time step and then it averages these predicitons for final classification</p>
@@ -300,7 +300,24 @@
             <span id="busuanzi_value_site_uv"></span>UV
         </span>
         Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
-</footer><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
