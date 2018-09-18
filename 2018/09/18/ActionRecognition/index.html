@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="易宸宇的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        ActionRecognition - Zone Yi
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 表里不一，知行合一 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.JPG" />
+        </div>
+        <div class="name">
+            <i>Yi Chenyu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Model-1-3D-CNN"><span class="toc-text">Model 1: 3D-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experiment-Configuration"><span class="toc-text">Experiment Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation"><span class="toc-text">Implementation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results-and-Discussion"><span class="toc-text">Results and Discussion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis-of-training-from-scratch"><span class="toc-text">Analysis of training from scratch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis-of-fine-tuning"><span class="toc-text">Analysis of fine tuning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model-2-Two-Stream-I3D"><span class="toc-text">Model 2: Two-Stream I3D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture"><span class="toc-text">Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Inflating-2D-ConvNets-into-3D"><span class="toc-text">Inflating 2D ConvNets into 3D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrapping-3D-filters-from-2D-filters"><span class="toc-text">Bootstrapping 3D filters from 2D filters</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pacing-receptive-field-growth-in-space-time-and-network-depth"><span class="toc-text">Pacing receptive field growth in space, time and network depth</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Two-3D-Streams"><span class="toc-text">Two 3D Streams</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation-1"><span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experiment-and-Discussion"><span class="toc-text">Experiment and Discussion</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model-3-CNN-LSTM"><span class="toc-text">Model 3: CNN+LSTM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-1"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Architecture-1"><span class="toc-text">Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Action-Recognition"><span class="toc-text">Action Recognition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Implementation-2"><span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Result"><span class="toc-text">Result</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dataset"><span class="toc-text">Dataset</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kinetics-600"><span class="toc-text">Kinetics-600</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UCF-101"><span class="toc-text">UCF-101</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HMDB-51"><span class="toc-text">HMDB-51</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 表里不一，知行合一 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        ActionRecognition
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-09-18 13:48:33</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Summary" title="Summary">Summary</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Action Recognition" title="Action Recognition">Action Recognition</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="Model-1-3D-CNN"><a href="#Model-1-3D-CNN" class="headerlink" title="Model 1: 3D-CNN"></a>Model 1: 3D-CNN</h1><p><a href="https://arxiv.org/abs/1711.09577" target="_blank" rel="noopener">Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet? 2017</a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>The purpose of this study is to determine whether current video datasets have sufficient data for training very deep CNNs with spatio-temporal 3D kernel.</p>
+<p>UCF-101 and HMDB-51 provide videos with size around 10k, ActivityNet has 28k video clips, which are too small to be used for optimizing CNN representation from scratch. Kinetics Dataset has more than 300k video clips (Kinetics 600 has 500k clips now).</p>
+<p>The 3D CNN architectures tested are based on ResNets and their 3D extented versions. The results show that Kinectics dataset can train 3D ResNet-152 from scratch. This is the <strong>first work</strong> to focus on the training of very deep 3D CNNs from scratch for action recognition.</p>
+<h2 id="Experiment-Configuration"><a href="#Experiment-Configuration" class="headerlink" title="Experiment Configuration"></a>Experiment Configuration</h2><p>ResNet 18-200, ResNeXt and DenseNet are tested with Kinetics dataset in the study. ResNet 18,34, use basic block (Type A); ResNet 50,101,152,200 use bottleneck block (Type B); Pre-activation ResNet 200 was evaluated as well.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537163694/blog/4.%20Action%20Recognition/3D-CNN3.png" alt="image"><br>Those deep CNNs are trained from scratch by Kinetics dataset and fined tune by UCF101, HMDB 51 and ActivityNet to evaluate model’s transfer ability.</p>
+<h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><p><strong>Training</strong>:</p>
+<p>DataPreprocessing:</p>
+<ol>
+<li>A 16-frame clip is generated around selected temporal position</li>
+<li>Randomly select a spatial position from the 4 corners and center</li>
+<li>Randomly select a spatial scale of sample to perform multi-scale cropping</li>
+<li>Spatially resize the sample at 112x112 pixels. The size of each sample is 3x16x112x112</li>
+<li>Each sample is horizontally flipped with 50% probability</li>
+<li>Subtract the mean values of ActivityNet from the sample for each color channel</li>
+</ol>
+<p>Hyperparameters：</p>
+<ol>
+<li>cross-entropy loss and BP</li>
+<li>SGD with weight decay of 0.001 and 0.9 for momentum</li>
+<li>When training from scratch, lr starts from 0.1 and divide it by 10 after the validation loss saturates.</li>
+<li>When fine tuning, lr starts from 0.001 and has weight decay of 1e-5</li>
+</ol>
+<p><strong>Testing</strong>:</p>
+<ol>
+<li>Each video is split into non-overlapped 16-frame clips.</li>
+<li>Each clip is spatially cropped around center position at scale 1</li>
+<li>Average output scores over all the clips of input video</li>
+</ol>
+<p><strong>All video clips in datasets are resized to heights of 240 pixels without changing their aspect ratios.</strong></p>
+<h2 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h2><h3 id="Analysis-of-training-from-scratch"><a href="#Analysis-of-training-from-scratch" class="headerlink" title="Analysis of training from scratch"></a>Analysis of training from scratch</h3><p>Training from scratch, ResNet-18 overfit both UCF-101, HMDB-51 and ActivityNet. The validation accuracies are 40.1, 16.2 and 26.8% respectively.</p>
+<p>Kinetics could be used to train ResNet-18 without overfitting. As model depth increased, accuracies improved until reaching the depth of 152.</p>
+<p>ResNeXt-101 achieved the best accuracies among the architectures testet.</p>
+<p>Input of 3x64x112x112 improves the accuracy by 4% on Kinetics dataset. Increase of resolution may also increase the accuracy like 3x64x224x224 in I3D.</p>
+<h3 id="Analysis-of-fine-tuning"><a href="#Analysis-of-fine-tuning" class="headerlink" title="Analysis of fine tuning"></a>Analysis of fine tuning</h3><p>In this section, UCF-101 and HMDB-51 are used to fine tune Kinectics pretrained CNNs. Only conv5_x and FC layers are fine tuned because it achieved the best performance during the preliminary experiments.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537163694/blog/4.%20Action%20Recognition/3D-CNN1.png" alt="image"></p>
+<p>Based on results on UCF-101 and HMDB-51, simple 3D architectures pretrained on Kinetics outperform complex 2D architectures.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537163694/blog/4.%20Action%20Recognition/3D-CNN2.png" alt="image"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<li>ResNet-18 training resulted in  significant overfitting for UCF-101, HMDB-51, and ActivityNet but not for Kinetics.</li>
+<li>Kinetics dataset has sufficient data for training deep 3D CNNs and enabling training of up to 152 ResNets layers, interestingly similar to 2D ResNets on ImageNet.</li>
+<li>Kinetics pretrained simple 3D architectures outperforms complex 2D architectures on UCF-101 and HMDB-51, and the pretrained ResNeXt-101 achieved 94.5% and 70.2% on UCF-101 and HMDB-51.</li>
+</ol>
+<h1 id="Model-2-Two-Stream-I3D"><a href="#Model-2-Two-Stream-I3D" class="headerlink" title="Model 2: Two-Stream I3D"></a>Model 2: Two-Stream I3D</h1><p><a href="https://arxiv.org/abs/1705.07750" target="_blank" rel="noopener">Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset 2017</a></p>
+<p>Two-Stream Inflated 3D ConvNets(I3D) builds upon Inception V1, but inflates their filters and pooling kernels into 3D, leading to very deep, naturally spatio-temporal classifier.</p>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><h3 id="Inflating-2D-ConvNets-into-3D"><a href="#Inflating-2D-ConvNets-into-3D" class="headerlink" title="Inflating 2D ConvNets into 3D"></a>Inflating 2D ConvNets into 3D</h3><p>Simply inflating all the filters and pooling kernels in 2D architecture - endowing them with an additional temporal dimension. Filters are typically square and we just make them cubic - NxN to NxNxN</p>
+<h3 id="Bootstrapping-3D-filters-from-2D-filters"><a href="#Bootstrapping-3D-filters-from-2D-filters" class="headerlink" title="Bootstrapping 3D filters from 2D filters"></a>Bootstrapping 3D filters from 2D filters</h3><p>To bootstrap parameters from the pretrained ImageNet models, it repeats the weights of 2D filters N times along the time dimension and rescaling them by dividing by N. </p>
+<h3 id="Pacing-receptive-field-growth-in-space-time-and-network-depth"><a href="#Pacing-receptive-field-growth-in-space-time-and-network-depth" class="headerlink" title="Pacing receptive field growth in space, time and network depth"></a>Pacing receptive field growth in space, time and network depth</h3><p>A symmetric receptive field is not necessarily optimal when considering time, it should depend on frame rate and image dimensions. If it grows too quickly in time relative to space, it may conflate edges from different objects breaking early feature detection, while if it grows too slowly, it may not capture scene dynamics well.</p>
+<p>64-frame snippets are used in training, the whole video is used and predictions are averaged in testing.</p>
+<p>The overall architecture is shown below:<br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537175423/blog/4.%20Action%20Recognition/I3D1.png" alt="image"></p>
+<h3 id="Two-3D-Streams"><a href="#Two-3D-Streams" class="headerlink" title="Two 3D Streams"></a>Two 3D Streams</h3><p>In experiments, it is found that two-stream configuration-with one I3D network trained on RGB inputs, and another on flow inputs which carry optimized, smooth flow information is valuable. These 2 networks are <strong>trained separately</strong> and predictions are averaged in test time.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537175947/blog/4.%20Action%20Recognition/I3D2.png" alt="image"></p>
+<h2 id="Implementation-1"><a href="#Implementation-1" class="headerlink" title="Implementation"></a>Implementation</h2><p><strong>Traning:</strong></p>
+<p>Data Preprocessing:</p>
+<ol>
+<li>video is sampled to 25 frames per second </li>
+<li>Resizing the smaller video side to 256 pixels, then randomly cropping 224x224 patch</li>
+<li>For shorter videos, we looped the video as many times as necessary to satisfy model’s input interface</li>
+<li>Random left-right flipping applied</li>
+</ol>
+<p>Hyperparameter:</p>
+<ol>
+<li>For all architectures, each convolutional layer follow by BN layer and ReLU activation function, except for the last convolutional layer which produce the class scores for each network.</li>
+<li>Standard SGD with momentun set to 0.9.</li>
+<li>3D ConvNets utilize 64 GPUs with synchronous parallelization.</li>
+<li>Trained model on Kinetics fro 110k steps with 10x reduction of learning rate when val loss saturated.</li>
+<li>Implemented in Tensorflow</li>
+</ol>
+<p><strong>Test:</strong><br>The models are applied convolutionally over the whole video taking 224x224 center crops.</p>
+<p><strong>Optical Flow is computed with TV-L1 algorithm.</strong></p>
+<h2 id="Experiment-and-Discussion"><a href="#Experiment-and-Discussion" class="headerlink" title="Experiment and Discussion"></a>Experiment and Discussion</h2><ol>
+<li>I3D outperformed all previous model, with either RGB, flow, or RGB+flow modalities.</li>
+</ol>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537178242/blog/4.%20Action%20Recognition/I3D3.png" alt="image"><br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537178242/blog/4.%20Action%20Recognition/I3D4.png" alt="image"></p>
+<ol>
+<li>ImageNet pre-training can extend to 3D ConvNets, improves accuracy.</li>
+<li><p>It seems plausible that RGB stream has more discriminative information - we often struggled with eyes to discern actions from flow alone in Kinetics. <strong>There may be opportunities fro future research on integrating some form of motion stabilization into these architectures.</strong></p>
+</li>
+<li><p>The study demonstrates transfer learning from one dataset(Kinetics) to anohter dataset(UCF-101/HMDB-51) for similar task. <strong>However, it still remains to be seen if there is a benefit in using Kinetics pre-training for other video task such as semantic video segmentation, video object detection, or optical flow computation.</strong></p>
+</li>
+<li>Action tubes or attention mechanism could be employed in the future.</li>
+</ol>
+<h1 id="Model-3-CNN-LSTM"><a href="#Model-3-CNN-LSTM" class="headerlink" title="Model 3: CNN+LSTM"></a>Model 3: CNN+LSTM</h1><p><a href="https://arxiv.org/abs/1411.4389" target="_blank" rel="noopener">Long-term Recurrent Convolutional Networks for Visual Recognition and Description 2014</a></p>
+<h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>This study instantiates proposed architecture in 3 experimental settings.</p>
+<ol>
+<li>Directly connect CNN model to deep LSTM network, to train video recognition models, which improves on the order of 4% on conventional benchmark</li>
+<li>Use CNN to encdoe a state vector, an LSTM to decode the vector into an natural language string, to train an end-to-end image to sentence mapping.</li>
+<li>Use conventional computer vision method to predict higher-level discriminative labels, enables LSTM decoders to generate language string<br><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM1.png" alt="image"></li>
+</ol>
+<h2 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture"></a>Architecture</h2><p>The LRCN model works by passing each visual input <script type="math/tex">v_{t}</script> (an image in isolation, or a frame from a video) through a feature transformation <script type="math/tex">\phi_{V}(v_{t})</script> parametrized by <script type="math/tex">V</script> to produce a fixed-length vector representation <script type="math/tex">\phi_{t}\in R^d</script>. Having computed the feature space representation of the visual input sequence <script type="math/tex"><\phi_{1},\phi_{2},...,\phi_{T}></script>, the sequence model then takes over.</p>
+<p>The final step in predicting a distribution <script type="math/tex">P(y_{t})</script> is to take a softmax over the output <script type="math/tex">z_{t}</script> of the sequence model.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM2.png" alt="image"><br>LRCN models is trained using SGD with momentum, with backpropagation to compute the gradient <script type="math/tex">\nabla L(V,W)</script> of the objective <script type="math/tex">L</script> with respect to all parameters <script type="math/tex">(V,W)</script>. <script type="math/tex">W</script> is parameter of LSTM, <script type="math/tex">V</script> is parameter of CNN.</p>
+<h2 id="Action-Recognition"><a href="#Action-Recognition" class="headerlink" title="Action Recognition"></a>Action Recognition</h2><p>T individual frames are inputs into T convolutional networks which are then connected to a single-layer LSTM with 2565 hidden units. The study analyzes clips of 16 frames.</p>
+<p>It explores 2 varaints of LRCN: LSTM is placed after CNN fc6 and CNN fc7. </p>
+<h3 id="Implementation-2"><a href="#Implementation-2" class="headerlink" title="Implementation"></a>Implementation</h3><p>In training, video clip of 16 frames is fed into model. LRCN predicts the video class at each time step and then it averages these predicitons for final classification</p>
+<p>In test, they extract 16 frame clips with a stride of 8 frames from each video and average across clips.</p>
+<p>Both RGB and optical flow are used as input.</p>
+<p>CNN base of the LRCN is a hybrid of the Caffe reference model, a mior variant of AlexNet. The net is pre-trained on the 1.2 M image ILSVRC-2012  classification training subset of the ImageNet dataset.</p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>RGB and flow networks can be combined by computing a weighted averagew fo network scores, which leads to better accuracy.</p>
+<p><img src="https://res.cloudinary.com/dtifkxumc/image/upload/v1537247425/blog/4.%20Action%20Recognition/LSTM3.png" alt="image"></p>
+<h1 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h1><h2 id="Kinetics-600"><a href="#Kinetics-600" class="headerlink" title="Kinetics-600"></a>Kinetics-600</h2><p><a href="https://deepmind.com/research/open-source/open-source-datasets/kinetics/" target="_blank" rel="noopener">https://deepmind.com/research/open-source/open-source-datasets/kinetics/</a></p>
+<p><a href="https://arxiv.org/abs/1705.06950" target="_blank" rel="noopener">The Kinetics Human Action Video Dataset</a></p>
+<p>Size: around 500k</p>
+<p>Class: 600</p>
+<p>Year: 2018</p>
+<p>Source: </p>
+<ol>
+<li>The clips are from YouTube video, last 10s, and have a variable resolution and frame rate</li>
+<li>For an action class, all clips are from different YouTube videos</li>
+</ol>
+<p>Note: There is a standard test set (label released), and also a held-out test set(label not released, used for AcitivityNet Challenge). It encourage researchers to report results on the standard test set. </p>
+<h2 id="UCF-101"><a href="#UCF-101" class="headerlink" title="UCF-101"></a>UCF-101</h2><p><a href="http://crcv.ucf.edu/data/UCF101.php" target="_blank" rel="noopener">http://crcv.ucf.edu/data/UCF101.php</a></p>
+<p><a href="http://crcv.ucf.edu/papers/UCF101_CRCV-TR-12-01.pdf" target="_blank" rel="noopener">UCF101: A Dataset of 101 Human Action Classes From Videos in The Wild</a></p>
+<p>Size: 13k</p>
+<p>Length: 27h</p>
+<p>Class: 101</p>
+<p>Year: 2011</p>
+<p>Source: realistc user-uploaded videos containing camera motion and cluttered background</p>
+<h2 id="HMDB-51"><a href="#HMDB-51" class="headerlink" title="HMDB-51"></a>HMDB-51</h2><p><a href="http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/" target="_blank" rel="noopener">http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/</a></p>
+<p><a href="http://serre-lab.clps.brown.edu/wp-content/uploads/2012/08/Kuehne_etal_iccv11.pdf" target="_blank" rel="noopener">HMDB: A Large Video Database for Human Motion Recognition. ICCV, 2011</a></p>
+<p>Size: 7000 </p>
+<p>Class: 51</p>
+<p>Year: 2011</p>
+<p>Source: Range from digitized movies to YouTube</p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
