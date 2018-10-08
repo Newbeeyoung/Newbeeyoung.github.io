@@ -945,7 +945,7 @@ pre code {
 .highlight table {
   margin: 0;
   width: auto;
-  border: none;
+  border: 1px solid #CCCCCC;
 }
 .highlight td {
   border: 1px solid #CCCCCC;
@@ -988,6 +988,7 @@ pre code {
 }
 .gist table {
   width: auto;
+  border: 1px solid #CCCCCC;
 }
 .gist table td {
   border: 1px solid #CCCCCC;
