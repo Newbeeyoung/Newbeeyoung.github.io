@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="易宸宇的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Dynamic Programming Summary - Zone Yi
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 表里不一，知行合一 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.JPG" />
+        </div>
+        <div class="name">
+            <i>Yi Chenyu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-text">#</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Concept"><span class="toc-text">Basic Concept</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Method"><span class="toc-text">Basic Method</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary-of-Leetcode-questions"><span class="toc-text">Summary of Leetcode questions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-1-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-1"><span class="toc-text">Type 1 - Bottom up:Time Complexity O(N) Space Complexity O(1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-2-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-N"><span class="toc-text">Type 2 - Bottom up: Time Complexity O(N) Space Complexity O(N)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bottom-up"><span class="toc-text">Bottom up</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Top-down"><span class="toc-text">Top down</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Special-Case"><span class="toc-text">Special Case</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 表里不一，知行合一 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Dynamic Programming Summary
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-10-08 18:08:59</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Summary" title="Summary">Summary</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id=""><a href="#" class="headerlink" title="#"></a>#</h2><p><strong>I have spent dozens of hours in last month on Dynamic Programming, it is time to go through all the questions and make a conclusion. I believe a good summary would be as important as finishing 50 questions.</strong></p>
+<h1 id="Basic-Concept"><a href="#Basic-Concept" class="headerlink" title="Basic Concept"></a>Basic Concept</h1><p>In my view, <strong>dynamic programming</strong> consists of two key concepts: </p>
+<ol>
+<li>State</li>
+<li>Recursive or iterative relation between state(Transition Function)</li>
+</ol>
+<p>State, some time could be regarded as storage, which leads to <strong>Memoization</strong> and <strong>Tabulation</strong> in dynamic programming. Current state could be generated by previous state using transition function.</p>
+<p>The key of solving dynamic programming problem is always finding the <strong>relation</strong>. Of course, it requires a lot of practice. </p>
+<h1 id="Basic-Method"><a href="#Basic-Method" class="headerlink" title="Basic Method"></a>Basic Method</h1><p>Most of the blogs and tutorials in dynamic progamming would introduce 2 major methods:</p>
+<ol>
+<li>Memoization - Top down</li>
+<li>Tabulation - Bottom up</li>
+</ol>
+<p>Here is a great article explaining these 2 methods:<br><a href="https://www.geeksforgeeks.org/tabulation-vs-memoizatation/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/tabulation-vs-memoizatation/</a>. In simple words, both of them have tables storing state. Top down with recursive method, will use table entry directly if it is not null, otherwise it will fill the table entry, make it available in the next recursion. Bottom up with iterative loop will fill table entry from left top to right bottom. The latter states depends on previous states.</p>
+<h1 id="Summary-of-Leetcode-questions"><a href="#Summary-of-Leetcode-questions" class="headerlink" title="Summary of Leetcode questions"></a>Summary of Leetcode questions</h1><p>Having finished most of <strong>EASY</strong> and <strong>MEDIUM</strong> questions in dynamic programming in Leetcode, i summarized all the questions to find some hidden regularities.</p>
+<h2 id="Type-1-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-1"><a href="#Type-1-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-1" class="headerlink" title="Type 1 - Bottom up:Time Complexity O(N) Space Complexity O(1)"></a>Type 1 - Bottom up:Time Complexity O(N) Space Complexity O(1)</h2><p>The optimal solution for ith item is only determined by most recent states, so not all previous states need to be stored. For example, in “House Robber” problem:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i]=max(dp[i-2],dp[i-3])+house[i]</span><br></pre></td></tr></table></figure></p>
+<p>In this case, dp[i] must contains house[i], which means robber must rob house[i],so we need to compare dp[i] with previous dp to find optimal solution. Sometimes there 2 states for dp, like “Best Time to Buy Stock” problem:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[i][0]=max(dp[i-1][1]+price[i],dp[i-1][0])</span><br><span class="line">dp[i][1]=max(dp[i-1][0]-price[i],dp[i-1][1])</span><br></pre></td></tr></table></figure></p>
+<h2 id="Type-2-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-N"><a href="#Type-2-Bottom-up-Time-Complexity-O-N-Space-Complexity-O-N" class="headerlink" title="Type 2 - Bottom up: Time Complexity O(N) Space Complexity O(N)"></a>Type 2 - Bottom up: Time Complexity O(N) Space Complexity O(N)</h2><p>To find the optimal solution of ith item, we need to find the optimal item which fufill requirements in range [0,i]. It requires all the previous states stored. For example, in “Perfect Square”,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">for i in range(n):</span><br><span class="line">    min_=sys.maxint</span><br><span class="line">    for j in range(i):</span><br><span class="line">        min_=min(dp[j],min_)</span><br><span class="line">    dp[i]=min_+1</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## Type 3 - Top Down: Time Complexity O(N) Space Complexity O(N)</span><br><span class="line"></span><br><span class="line">Top-Down is memoiation. For example, &quot;Cheapest flights with K stop&quot;:</span><br></pre></td></tr></table></figure>
+<pre><code>def bfs(n,flightlist,dst,s,k,mem):
+
+        if k&lt;-1:
+            return sys.maxint
+
+        if s==dst:
+            return 0
+        else:
+            if mem[s][k]!=0:
+                return mem[s][k]
+
+            tmp=sys.maxint
+            for i in range(n):
+                if flightlist[s][i]!=0:
+                    tmp=min(bfs(n,flightlist,dst,i,k-1,mem)+flightlist[s][i],tmp)
+            mem[s][k]=tmp
+            return tmp
+</code></pre><p>```</p>
+<h2 id="Bottom-up"><a href="#Bottom-up" class="headerlink" title="Bottom up"></a>Bottom up</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Question</th>
+<th>State</th>
+<th>State Relation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>63</td>
+<td>Unique Path</td>
+<td>number of unique path dp[i][j]</td>
+<td>dp[i][j]=dp[i-1][j]+dp[i][j-1]</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Minimum path sum</td>
+<td>min path sum dp[i][j]</td>
+<td>dp[i][j]=min(dp[i-1][j],dp[i][j-1])+grid[i][j]</td>
+</tr>
+<tr>
+<td>120</td>
+<td>Triangle</td>
+<td>min triangle path sum dp[i][j]</td>
+<td>dp[i][j]=min(dp[i-1][j],dp[i-1][j-1])+triangle[i][j]</td>
+</tr>
+<tr>
+<td>152</td>
+<td>Maximum product subarray</td>
+<td>max product dp[i]</td>
+<td>dp[i]=dp[i-1]*nums[i] (actually more complex due to positive and negative products)</td>
+</tr>
+<tr>
+<td><strong>198,213</strong></td>
+<td><strong>House Robber I,II</strong></td>
+<td>max amount of robbery dp[i]</td>
+<td>dp[i]=max(dp[i-2],dp[i-3])+house[i] (Q II introduces circle, more condition to consider)</td>
+</tr>
+<tr>
+<td><strong>279</strong></td>
+<td><strong>Perfect Squares</strong></td>
+<td>least number of perfect squares dp[n]</td>
+<td>Typical: for i in range(n):for j in range(i): dp[n]=min(dp[j])+1. Current optimal case comes from the optimal case within all the previous states. Space complexity is o(N)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Longest Increasing Subsequence</td>
+<td>longest increasing subsequence dp[n]</td>
+<td>Simlilar to 279. for i in range(n):for j in range(i): if nums[i]&gt;nums[j]:dp[i]=max(dp[j])+1</td>
+</tr>
+<tr>
+<td><strong>121</strong></td>
+<td><strong>Best Time to buy and sell stock SERIES</strong></td>
+<td>max value when holding and not holding stock after k transaction at nth day dp[n][k][1],dp[n][k][0]</td>
+<td>dp[n][k][1]=max(dp[n-1][k][1],dp[n-1][k-1][0]-price[n]); dp[n][k][0]=max(dp[n-1][k][0],dp[n-1][k][1]+price[n]) only buy counted as one transaction in this assumption</td>
+</tr>
+<tr>
+<td>322</td>
+<td>Coin change</td>
+<td>min number of coin add up to amount n dp[n]</td>
+<td>Similar to 279,300</td>
+</tr>
+<tr>
+<td>338</td>
+<td>Counting Bits</td>
+<td>number of 1’s in binary form dp[n]</td>
+<td>dp[n]=dp[n/2]+n%2 Found by sampling</td>
+</tr>
+<tr>
+<td>343</td>
+<td>Integer Break</td>
+<td>break integers to at least 2 integers and achieve max product dp[n]</td>
+<td>Similar to 279,300</td>
+</tr>
+<tr>
+<td>211</td>
+<td>Maximal square</td>
+<td>max square from (0,0) to (i,j) dp[i][j]</td>
+<td>dp[i][j]=min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1</td>
+</tr>
+<tr>
+<td><strong>53</strong></td>
+<td><strong>Maximual Subarray</strong></td>
+<td>max subarray which must contains nums[n]: dp[n]</td>
+<td>dp[n]=dp[n-1]+nums[n] if dp[n-1]&gt;0 else dp[n]=nums[n] return max(dp)</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Climbing Stairs</td>
+<td>distinct ways climbing to nth step dp[n]</td>
+<td>dp[n]=dp[n-1]+dp[n-2]</td>
+</tr>
+<tr>
+<td>368</td>
+<td>Largest Divisible Subset</td>
+<td>largest divisible subset which must contains nums[n]: dp[n]</td>
+<td>similar to 53</td>
+</tr>
+<tr>
+<td>377</td>
+<td>Combination Sum IV</td>
+<td>possible combinations dp[n]</td>
+<td>dp[n]+=dp[n-item] for item in nums</td>
+</tr>
+<tr>
+<td><strong>416</strong></td>
+<td><strong>Partition Equal Subset Sum (0/1 knapsack problem)</strong></td>
+<td>specific sum j could be obtained from first i numbers: dp[i][j]</td>
+<td>dp[i][j]=dp[i-1][j] or dp[i-1][j-nums[i]]</td>
+</tr>
+<tr>
+<td><strong>413</strong></td>
+<td><strong>Arithmetic Slices</strong></td>
+<td>number of slices end at nums[i]: dp[i]</td>
+<td>if nums[i]-nums[i-1]==nums[i-1]-nums[i-2]: dp[i]=dp[i-1]+1</td>
+</tr>
+<tr>
+<td><strong>516</strong></td>
+<td><strong>Longest Palindromic Subsequence</strong></td>
+<td>longest palidromic subsequence length from i to j: dp[i][j]</td>
+<td>if s[i]==s[j]:dp[i][j]=2+dp[i+1][j-1] if j-1&gt;i+1 else 2, else dp[i][j]=max(dp[i+1)[j],dp[i][j-1]</td>
+</tr>
+<tr>
+<td>650</td>
+<td>Two Key keyboard</td>
+<td>min step needed to form n ‘A’: dp[n]</td>
+<td>for i in range(n): for j in reversed(range(i-1)): if i%j==0:dp[i]=dp[j]+i/j</td>
+</tr>
+<tr>
+<td>673</td>
+<td>Number of Longest Increasing Subsequence</td>
+<td>longest increasing subsequence end with nums[n]</td>
+<td>Upgrade version of 300 </td>
+</tr>
+<tr>
+<td><strong>718</strong></td>
+<td><strong>Maximum Length of Repeated Subarray</strong></td>
+<td>length of longest substring that end with A[i] and B[j]:dp[i][j]</td>
+<td>if A[i]==B[j]:dp[i][j]=dp[i-1][j-1]+1</td>
+</tr>
+<tr>
+<td>712</td>
+<td>Minimum ASCII Delete Sum for Two Strings</td>
+<td>min sum of delete strings end with s1[i],s2[j]:dp[i][j]</td>
+<td>similar to 718</td>
+</tr>
+<tr>
+<td>746</td>
+<td>Min Cost Climbing Stairs</td>
+<td>min cost which must contains cost[n]:dp[n]</td>
+<td>dp[n]=min(dp[n-1],dp[n-2])+cost[n]</td>
+</tr>
+<tr>
+<td><strong>790</strong></td>
+<td><strong>Domino and T Domino Tiling</strong></td>
+<td>number of ways to form rectangle with lenght n:dp[n]</td>
+<td>dp[n]=2*dp[n-1]+dp[n-3] (Quite hard to find)</td>
+</tr>
+<tr>
+<td>813</td>
+<td>Largest Sum of Average</td>
+<td>Largest sum in first i elements with k partitions: dp[i][k]</td>
+<td>for k in range(K):for j in range(i):dp[i][k]=max(dp[i][k],sum(List[j:i])/(i-j)</td>
+</tr>
+<tr>
+<td>873</td>
+<td>Length of longest Fibonacci Sequence</td>
+<td>lenght of longest Fibonacci sequence from List[j] to List[i]: dp[j][i]</td>
+<td>for i in range(len(List):for j in range(i):if List[i]-List[j] exist:dp[j][i]=dp[List[i]-List[j]][i]+1 ,result=max(result,max[j][i] </td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Top-down"><a href="#Top-down" class="headerlink" title="Top down"></a>Top down</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Question</th>
+<th>Memory</th>
+<th>Transition Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>139</td>
+<td>Word Break</td>
+<td>Substrings which cannot be broken into words</td>
+<td>for word in words: if s[start:start+len(word)]==word: if recur():return true</td>
+</tr>
+<tr>
+<td>494</td>
+<td>Target Sum</td>
+<td>number of ways that S==sum(i numbers): mem[i][S]</td>
+<td>count(i+1,s+nums[i])+count(i+1,s-nums[i])</td>
+</tr>
+<tr>
+<td>576</td>
+<td>Out of Boundary Paths</td>
+<td>number of paths at (i,j) and N steps left</td>
+<td>path[i][j][N]=findpath(i,j+1,N-1)+findpath(i+1,j,N-1)+findpath(i-1,j)+findpath(i,j-1)</td>
+</tr>
+<tr>
+<td>646</td>
+<td>Maximum Length of Pair Chain</td>
+<td></td>
+<td>longest chain end with nums[n]:dp[n]</td>
+<td>similar to 279</td>
+</tr>
+<tr>
+<td>688</td>
+<td>Knight Probability in Chessboard</td>
+<td>number of path that knight will go out of chessboard when k steps left</td>
+<td>for i in range(8):count+=count(k-1,row+pair[i][0],column+pair[i][1])</td>
+</tr>
+<tr>
+<td><strong>787</strong></td>
+<td><strong>Cheapest Flights with K Stops</strong></td>
+<td>Min cost path which must contain flight i at k stop: mem[i][k]</td>
+<td>for i in range(n):mem[i][k]=min(mem[s][k-1]+flight[i][k])</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Special-Case"><a href="#Special-Case" class="headerlink" title="Special Case"></a>Special Case</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Question</th>
+<th>State</th>
+<th>State Relation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>264</td>
+<td>Ugly Number II</td>
+<td>nth ugly number dp[n]</td>
+<td>Update mutiplier of 2,3,5 independently to find min ugly number dp[n] which is just larger than dp[n-1]</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Range Sum Query 2D -Immutable</td>
+<td>sum of elements from (0,0) to (n,n) Sum[n][n]</td>
+<td>Area = Sum[i2][j2]-Sum[i2][j1]-Sum[i1][j2]+Sum[i1][j1]. Immutable means the function would be callled many times, we need initiate states in <strong>init</strong>function.</td>
+</tr>
+<tr>
+<td>376</td>
+<td>Wiggle Subsequence</td>
+<td></td>
+<td>Greedy algorithm: only need to find number of max and min peak in sequence</td>
+</tr>
+<tr>
+<td>392</td>
+<td>Is Subsequence</td>
+<td>index of s</td>
+<td>if s[index]==t[i]: index+=1 When index&gt;len(s), the whole substring is found</td>
+</tr>
+<tr>
+<td>467</td>
+<td>Unique Substrings in Wraparound String</td>
+<td>Keep tracking longest string end with ‘a-z’: dict{‘a-z’:count}</td>
+<td>Sum+=count(a-z), upgrade version of 413. The aggregation of number of substring follows the same rule: count(x)=length of longest string end with x </td>
+</tr>
+<tr>
+<td>647</td>
+<td>Palindromic substrings</td>
+<td><strong>Manacher’s Algorithm</strong>/Expand from center</td>
+</tr>
+<tr>
+<td>801</td>
+<td>Minimun Swaps To Make Increasing Sequence</td>
+<td>Wether swap A[i] and B[i] only depends on A[i-1] and B[i-1], so two dp variable should be updated. Best condition when A[i] and B[i] swap and best condition when A[i] and B[i] not swap.</td>
+</tr>
+<tr>
+<td>838</td>
+<td>Pushing Dominos</td>
+<td>final result and status of previous and current dominoes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
