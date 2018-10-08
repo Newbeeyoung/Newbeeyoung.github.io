@@ -11,7 +11,7 @@ body {
   margin-left: calc(100vw - 100%) !important;
 }
 .table-container,th,td{
-  border: 0px solid black;
+  border: 1px solid black;
   border-collapse:collapse;
   text-align:left;
 
