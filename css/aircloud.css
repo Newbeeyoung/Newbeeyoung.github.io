@@ -990,7 +990,7 @@ pre code {
   width: auto;
 }
 .gist table td {
-  border: 1px solid;
+  border: 1px solid #CCCCCC;
 }
 pre .deletion {
   background: #fdd;
