@@ -948,7 +948,7 @@ pre code {
 .highlight table {
   margin: 0;
   width: auto;
-  border: 1px solid #CCCCCC;
+  border: none;
 }
 .highlight td {
   border: 1px solid #CCCCCC;
