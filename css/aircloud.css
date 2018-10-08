@@ -10,8 +10,9 @@ html {
 body {
   margin-left: calc(100vw - 100%) !important;
 }
-.table-container{
-  border: 1px solid #cccccc;
+.table-container,th,td{
+  border: 1px solid black;
+
 }
 .red {
   color: red;
@@ -951,7 +952,7 @@ pre code {
   border: none;
 }
 .highlight td {
-  border: 1px solid #CCCCCC;
+  border: none;
   padding: 0;
 }
 .highlight figcaption {
@@ -991,10 +992,10 @@ pre code {
 }
 .gist table {
   width: auto;
-  border: 1px solid #CCCCCC;
+  border: none;
 }
 .gist table td {
-  border: 1px solid #CCCCCC;
+  border: none;
 }
 pre .deletion {
   background: #fdd;
