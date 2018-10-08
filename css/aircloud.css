@@ -948,7 +948,7 @@ pre code {
   border: none;
 }
 .highlight td {
-  border: none;
+  border: 1px solid;
   padding: 0;
 }
 .highlight figcaption {
