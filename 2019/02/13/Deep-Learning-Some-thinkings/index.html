@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="易宸宇的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Deep Learning-Some Thinkings - Zone Yi
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 表里不一，知行合一 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.JPG" />
+        </div>
+        <div class="name">
+            <i>Yi Chenyu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 表里不一，知行合一 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Deep Learning-Some Thinkings
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-02-13 20:06:20</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#Deep Learning" title="Deep Learning">Deep Learning</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>接触深度学习一年有余了，做过一些项目，看过一些论文，一些相关书籍，心中有些关于深度学习的碎碎念，之前总是很模糊，不能归纳成文字，最近在教授提示下读了些关于数据和模型的博客，这些想法愈发强烈，以此作文强迫自己思考小结一下，以免拖下去想法再难成型。</p>
+<p>李开复在新书《AI未来》中有过对未来深度学习发展的思考：基本的理论在上世纪和本世纪初已经基本完善，接下来进入应用的时代，基本理论的突破很难再出现。其实我是很赞同的，12年AlexNet的横空出世和16年AlphaGO的石破天惊是工程的胜利，不是理论的突破。这两个AI浪潮的标志性事件背后是更多的数据和更强的硬件，采用的基本方法是监督学习和强化学习。现在AI落地应用都离不开监督学习，强化学习尽管是AlphaGO的基石，但是在商业应用和学术领域并不像深度监督学习般风光。</p>
+<p>监督学习的核心是数据和模型。把数据比作成教科书，模型比作成学生，学生从教科书中学到知识，再将其泛化到实际任务中，这个任务在实验室就是测试数据集的预测，在商业应用中就是关于真实场景数据的预测。如果这个比喻成立，那教科书的内容再很大程度上影响了学生可以从事的工作。这就引出一些问题：数据集要从数量和质量上达到哪种程度才能使模型达到理想的效果？模型在现有的深度学习知识体系下有多大的潜力？</p>
+<p>数量取决于任务的复杂程度。光线，背景，遮挡，相机角度都是影响最后结果的因素，这些因素的变化越多，所需的数据就越多。所以自动驾驶需要收集上亿公里的视频数据，但是即使收集了这么多数据，这些数据也不可能覆盖所有的背景和突发情况，在这些情境中自动驾驶汽车会做出怎么样的反应我们真的没有把握。数据集永远不够大。从商业角度看，监督学习不仅需要记录图像，还需要标记，标记的成本在一些领域无法想象。比如让有限的人力给自动驾驶收集的几亿公里图像进行语义分割，这是不可能完成的任务。但是一个从未进过城的司机，只要知道交通规则就能在城里随意穿梭，他可不需要几亿公里的行驶经验。</p>
+<p>从质量上来说，如何构建数据集才能消除模型的偏见？因为模型本身只是一个工具，偏见来自收集数据和标记的人。正如某一研究显示，caltech里的鱼一类总是与水同时出现，当模型预测鱼的时候其实是看见了鱼和水。当鱼不在水里的时候，模型也就不知道这是不是鱼了。举个我之前做的action recognition的例子，跳水的视频都有人，跳板，水池，和水花。在真实的场景中，如果只有水池和水花也会让模型得到跳水的答案。这不是模型的问题，而是因为在我们标记的时候从来没有给过离开水的鱼，没有水花的跳水。当我们教婴儿认识东西，比如指向苹果树上的苹果时，说道“苹果”，那婴儿下次看到没有苹果的苹果树时，还会说是“苹果”吗？婴儿很难回答这个问题，但是成年人却不费吹灰之力。原因很简单，成年人已经有关于苹果的知识了，下次不管在哪里看到苹果，都能认出来。深度学习的问题在于我们用现成的数据训练端到端的模型，如果数据不够大，没有覆盖到所有情况，模型的泛化能力就很受影响，因为他没有积累的基础知识。一个没上过小学的人上中学课，考试中如果有课本上一模一样的题，他可以回答，但让他举一反三可就不太可能了。在最近的关于GAN和Image retrieval的研究中，我们遇到了关于domain adaption的问题，需要将街拍图片和摄影棚图片adapt到一个domain再做检索。在这个任务上，人可以做得很好，因为我们知道什么是衣服，我们知道关注哪些特征，但是在端到端的模型学习中，我们只能加一些限制，比如把衣服的segmentation作为输入，利用domain discriminator强迫模型将两种图片融入一个domain，用triplet loss使两种图片的latent更接近，但这就好比看病时头痛医头，脚痛医脚，殊不知这病人是得了癌症，治标不治本。</p>
+<p>深度学习相比人的优点在于它可以感知到人看不见的东西，Forensic领域拿深度学习可以做到99%的准确率，让人去做可能还不如瞎猜，但这可以成为弱点，在最近的对抗攻击中，一个像素点就可以改变模型的预测结果。模型对细节十分敏感，只要数据足够，在很多领域都可以超过人类。相比人的缺点也很明显，它没有先验知识，不能进行因果推理，人类可以做one-shot learning，现有的模型却不行。</p>
+<p>在深度学习逐渐商业化的过程中，很多情况下数据收集和标记的成本是不可承担的，如果能让模型拥有先验知识再进行训练，必然可以节省很多人力物力。作为最简单的transfer learning, pretraining已经在很多领域发挥作用，但transfer learning肯定有更加丰富的方法值得探索，可以让模型像人类一样循序渐进，最后轻而易举便可以在特定场景下被专业化。</p>
+<p>最后再回到教授提出的关于color和pattern的问题，pattern和color对模型训练影响哪个大，其实这个问题的内在逻辑就是刻意制造数据集的偏见，并在可控实验环境中量化深度学习模型对不同显性特征的敏感性，从而理解模型的泛化能力和鲁棒性。在讨论过数据对模型的影响后，这个研究就是为理解现有深度学习模型的能力和偏好铺路，所以与神经网络的visualisation密切相关。</p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
